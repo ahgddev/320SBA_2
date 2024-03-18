@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Routes, Route} from "react-router-dom"
+import dataGrabber from "./data/server"
 import './App.css'
 import NavBar from './components/NavBar'
 import Home from "./pages/Home"
 import Grocery from "./pages/Grocery"
 import Menu from "./pages/Menu"
 import Favorites from "./pages/Favorites"
+
 
 function App() {
 
