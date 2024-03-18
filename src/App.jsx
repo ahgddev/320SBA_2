@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route} from "react-router-dom"
-import dataGrabber from "./data/server"
+// import dataGrabber from "./data/server"
 import './App.css'
 import NavBar from './components/NavBar'
 import Home from "./pages/Home"
