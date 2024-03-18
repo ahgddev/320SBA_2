@@ -1,4 +1,4 @@
-import {userParams} from "react-router-dom"
+import {useParams} from "react-router-dom"
 
 function Grocery() {
   return (
