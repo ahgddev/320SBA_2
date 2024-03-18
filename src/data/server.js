@@ -11,7 +11,7 @@ export default async function dataGrabber() {
 		url: 'https://api.spoonacular.com/food/menuItems/search',
 		params: {
       query: {query},
-			number: '10',
+			number: '5',
 			offset: {page}
 		},
 		headers: {
