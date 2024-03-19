@@ -17,7 +17,7 @@ function Grocery() {
         offset: pageNumber,
       },
       headers: {
-        "x-api-key": import.meta.env.VITE_API_KEY,
+        "x-api-key": import.meta.env.API_KEY,
       },
     };
     try {
