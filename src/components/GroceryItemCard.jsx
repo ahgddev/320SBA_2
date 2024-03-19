@@ -1,4 +1,4 @@
-function GroceryItemCard({ id, title, addFav }) {
+function GroceryItemCard({ id, title, addFav, buttonHide }) {
   let newFav = { id: id, title: title };
   return (
     <div className="itemCard">
@@ -9,6 +9,7 @@ function GroceryItemCard({ id, title, addFav }) {
         onClick={() => {
           addFav(newFav);
         }}
+        style={ buttonHide && {display: "none"}}
       >
         Make Favorite
       </button>

@@ -36,6 +36,7 @@ function Favorites({ groceryFavs, menuFavs }) {
               key={groceryItems.id}
               id={groceryItems.id}
               title={groceryItems.title}
+              buttonHide={true}
             />
           );
         })}
@@ -51,6 +52,7 @@ function Favorites({ groceryFavs, menuFavs }) {
               id={menuItems.id}
               title={menuItems.title}
               restaraunt={menuItems.restarauntChain}
+              buttonHide={true}
             />
           );
         })}

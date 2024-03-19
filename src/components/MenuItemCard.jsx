@@ -1,4 +1,4 @@
-function MenuItemCard({ id, title, restaraunt, imageURL, addFav }) {
+function MenuItemCard({ id, title, restaraunt, imageURL, addFav, buttonHide }) {
   let newFav = {
     id: id,
     title: title,
@@ -16,7 +16,7 @@ function MenuItemCard({ id, title, restaraunt, imageURL, addFav }) {
         onClick={() => {
           addFav(newFav);
         }}
-      >
+      style={ buttonHide && {display: "none"}}>
         Make Favorite
       </button>
     </div>
