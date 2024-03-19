@@ -1,8 +1,8 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import GroceryItemCard from "../components/GroceryItemCard";
 
-function Grocery() {
+function Grocery({ addFunc }) {
   const [groceryData, setGroceryData] = useState();
   const [searchQuery, setSearchQuery] = useState("pizza");
   const [pageNumber, setPageNumber] = useState(0);
@@ -56,7 +56,12 @@ function Grocery() {
       <section id="groceryResults">
         {groceryData?.map((groceryItems) => {
           return (
-            <GroceryItemCard key={groceryItems.id} id={groceryItems.id} title={groceryItems.title}/>
+            <GroceryItemCard
+              key={groceryItems.id}
+              id={groceryItems.id}
+              title={groceryItems.title}
+              addFav={addFunc}
+            />
           );
         })}
         <button
