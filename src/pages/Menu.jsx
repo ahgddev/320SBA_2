@@ -46,7 +46,7 @@ import MenuItemCard from "../components/MenuItemCard";
 // ];
 
 function Menu() {
-  const [menuData, setMenuData] = useState(null);
+  const [menuData, setMenuData] = useState();
 
  async function dataGrabber(query, page) {
     //Add parameters to function
@@ -63,10 +63,7 @@ function Menu() {
     };
     try {
       let response = await axios.get('https://api.spoonacular.com/food/menuItems/search', options);
-      console.log(response.data.menuItems)
       setMenuData(response.data.menuItems)
-      // let data = ;
-      // return data
     } catch (error) {
       console.error(error.response);
     }
@@ -78,20 +75,20 @@ function Menu() {
 
   return (
     <div id="menuContainer">
-      {/* <h1>Menu Page</h1>
-      {console.log(menuData)}
+      <h1>Menu Page</h1>
       <input type="search" name="searchbar" id="searchBar" />
       <button id="searchBtn">Search</button>
       <section id="menuResults">
-        {menuData.map((menuItems) => (
-          <MenuItemCard
+        {menuData?.map((menuItems) => {
+          {console.log("Currently " + JSON.stringify(menuItems))}
+          return <MenuItemCard
             imageURL={menuItems.image}
             id={menuItems.id}
             title={menuItems.title}
             restaraunt={menuItems.restarauntChain}
           />
-        ))}
-      </section> */}
+        })}
+      </section>
     </div>
   );
 }
