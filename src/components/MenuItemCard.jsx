@@ -4,7 +4,8 @@ function MenuItemCard({id, title, restaraunt, imageURL}) {
         <img src={imageURL} alt={title + " image"} />
         <p>{id}</p>
         <p>{title}</p>
-        <p>{restaraunt}</p>    
+        <p>{restaraunt}</p>
+        <button id="favoriteBtn">Make Favorite</button>    
       </div>
     )
   }

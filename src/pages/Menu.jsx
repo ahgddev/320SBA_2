@@ -49,9 +49,6 @@ function Menu() {
       </button>
       <section id="menuResults">
         {menuData?.map((menuItems) => {
-          {
-            console.log("Currently " + JSON.stringify(menuItems));
-          }
           return (
             <MenuItemCard
               imageURL={menuItems.image}
@@ -61,7 +58,7 @@ function Menu() {
             />
           );
         })}
-        <button id="backBtn" onClick={() => {setPageNumber(pageNumber - 5)}}>Back</button>
+        <button id="backBtn" onClick={() => {setPageNumber(pageNumber == 5 ? 0 : pageNumber - 5)}}>Back</button>
         <button id="nextBtn" onClick={() => {setPageNumber(pageNumber + 5)}}>Next</button>
       </section>
     </div>
