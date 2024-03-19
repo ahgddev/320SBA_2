@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import GroceryItemCard from "../components/GroceryItemCard";
 
-
 function Grocery() {
   const [groceryData, setGroceryData] = useState();
   const [searchQuery, setSearchQuery] = useState("pizza");
-  const [pageNumber, setPageNumber] = useState(0)
+  const [pageNumber, setPageNumber] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   async function dataGrabber() {
+    setLoading(true);
     const options = {
       params: {
         query: searchQuery,
@@ -25,6 +26,7 @@ function Grocery() {
         options
       );
       setGroceryData(response.data.products);
+      setLoading(false);
     } catch (error) {
       console.error(error.response);
     }
@@ -32,7 +34,6 @@ function Grocery() {
 
   useEffect(() => {
     dataGrabber();
-    
   }, [pageNumber]);
 
   return (
@@ -47,17 +48,33 @@ function Grocery() {
       <button id="searchBtn" onClick={dataGrabber}>
         Search
       </button>
+      {loading ? (
+        <div>
+          <p>Loading data...</p>
+        </div>
+      ) : null}
       <section id="groceryResults">
         {groceryData?.map((groceryItems) => {
           return (
-            <GroceryItemCard
-              id={groceryItems.id}
-              title={groceryItems.title}
-            />
+            <GroceryItemCard id={groceryItems.id} title={groceryItems.title} />
           );
         })}
-        <button id="backBtn" onClick={() => {setPageNumber(pageNumber == 5 ? 0 : pageNumber - 5)}}>Back</button>
-        <button id="nextBtn" onClick={() => {setPageNumber(pageNumber + 5)}}>Next</button>
+        <button
+          id="backBtn"
+          onClick={() => {
+            setPageNumber(pageNumber == 5 ? 0 : pageNumber - 5);
+          }}
+        >
+          Back
+        </button>
+        <button
+          id="nextBtn"
+          onClick={() => {
+            setPageNumber(pageNumber + 5);
+          }}
+        >
+          Next
+        </button>
       </section>
     </div>
   );
