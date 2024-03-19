@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import MenuItemCard from "../components/MenuItemCard";
 
-function Menu({addFunc}) {
+function Menu({ addFunc }) {
   const [menuData, setMenuData] = useState();
   const [searchQuery, setSearchQuery] = useState("burger");
   const [pageNumber, setPageNumber] = useState(0);
@@ -57,7 +57,7 @@ function Menu({addFunc}) {
         {menuData?.map((menuItems) => {
           return (
             <MenuItemCard
-            key={menuItems.id}
+              key={menuItems.id}
               imageURL={menuItems.image}
               id={menuItems.id}
               title={menuItems.title}
