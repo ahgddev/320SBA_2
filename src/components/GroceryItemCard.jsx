@@ -1,6 +1,10 @@
-function GroceryItemCard() {
+function GroceryItemCard({id, title}) {
   return (
-    <div className="itemCard">GroceryItemCard</div>
+    <div className="itemCard">
+      <p>{id}</p>
+      <p>{title}</p>
+      <button id="favoriteBtn">Make Favorite</button>    
+    </div>
   )
 }
 
