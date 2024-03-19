@@ -6,13 +6,14 @@ import MenuItemCard from "../components/MenuItemCard";
 function Menu() {
   const [menuData, setMenuData] = useState();
   const [searchQuery, setSearchQuery] = useState("burger");
+  const [pageNumber, setPageNumber] = useState(0)
 
   async function dataGrabber() {
     const options = {
       params: {
         query: searchQuery,
         number: "5",
-        offset: 0,
+        offset: pageNumber,
       },
       headers: {
         "x-api-key": import.meta.env.VITE_API_KEY,
@@ -31,7 +32,8 @@ function Menu() {
 
   useEffect(() => {
     dataGrabber();
-  }, []);
+    
+  }, [pageNumber]);
 
   return (
     <div id="menuContainer">
@@ -59,6 +61,8 @@ function Menu() {
             />
           );
         })}
+        <button id="backBtn" onClick={() => {setPageNumber(pageNumber - 5)}}>Back</button>
+        <button id="nextBtn" onClick={() => {setPageNumber(pageNumber + 5)}}>Next</button>
       </section>
     </div>
   );
