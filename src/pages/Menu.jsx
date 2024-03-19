@@ -13,7 +13,7 @@ function Menu({ addFunc }) {
     const options = {
       params: {
         query: searchQuery,
-        number: "5",
+        number: "7",
         offset: pageNumber,
       },
       headers: {
@@ -38,7 +38,8 @@ function Menu({ addFunc }) {
 
   return (
     <div id="menuContainer">
-      <h1>Menu Page</h1>
+      <h1>Restaraunt Menu</h1>
+      <div id="searchSection">
       <input
         type="search"
         name="searchbar"
@@ -48,8 +49,9 @@ function Menu({ addFunc }) {
       <button id="searchBtn" onClick={dataGrabber}>
         Search
       </button>
+      </div>
       {loading ? (
-        <div>
+        <div id="loadingScreen">
           <p>Loading data...</p>
         </div>
       ) : null}
@@ -57,6 +59,7 @@ function Menu({ addFunc }) {
         {menuData?.map((menuItems) => {
           return (
             <MenuItemCard
+            className="cardItem"
               key={menuItems.id}
               imageURL={menuItems.image}
               id={menuItems.id}
@@ -66,10 +69,13 @@ function Menu({ addFunc }) {
             />
           );
         })}
+
+      </section>
+      <div id="progressButtons">
         <button
           id="backBtn"
           onClick={() => {
-            setPageNumber(pageNumber == 5 ? 0 : pageNumber - 5);
+            setPageNumber(pageNumber == 7 ? 0 : pageNumber - 7);
           }}
         >
           Back
@@ -77,12 +83,12 @@ function Menu({ addFunc }) {
         <button
           id="nextBtn"
           onClick={() => {
-            setPageNumber(pageNumber + 5);
+            setPageNumber(pageNumber + 7);
           }}
         >
           Next
         </button>
-      </section>
+        </div>
     </div>
   );
 }

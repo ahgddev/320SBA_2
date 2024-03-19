@@ -1,42 +1,85 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+#HomePage {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#searchBar {
+  line-height: 0.2;
+  border-top-right-radius: 1px;
+  border-bottom-right-radius: 1px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#searchBtn {
+  margin-top: 5px;
+  line-height: 0.18;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#loadingScreen{
+  position: fixed;
+  width: 100%;
+  height: 80%;
+  background-color: rgb(20, 20, 20);
 }
 
-.card {
-  padding: 2em;
+#loadingScreen p{
+  line-height: 5;
+  font-size: 100%;
 }
 
-.read-the-docs {
-  color: #888;
+/* Grocery, Menu and Favorites Pages */
+#groceryContainer,
+#menuContainer,
+#groceryFavsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+}
+
+#groceryResults div,
+#menuResults div,
+#groceryFavsContainer div {
+  width: 25%;
+}
+
+#groceryResults,
+#menuResults,
+#groceryFavsContainer,
+#menuFavsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 1%;
+}
+#groceryFavsContainer h1,
+#menuFavsContainer h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.itemCard {
+  width: 25%;
+  text-align: center;
+}
+
+#menuResults img,
+#menuFavsContainer img {
+  width: 75%;
+  border-radius: 10px;
+}
+
+p {
+  display: inline-block;
+  width: 55%;
+}
+
+#progressButtons {
+  margin-top: 5%;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+#progressButtons button {
+  margin: auto;
 }

@@ -33,6 +33,7 @@ function Favorites({ groceryFavs, menuFavs }) {
         {groceryFavs?.map((groceryItems) => {
           return (
             <GroceryItemCard
+            className="cardItem"
               key={groceryItems.id}
               id={groceryItems.id}
               title={groceryItems.title}
@@ -47,6 +48,7 @@ function Favorites({ groceryFavs, menuFavs }) {
         {menuFavs?.map((menuItems) => {
           return (
             <MenuItemCard
+            className="cardItem"
               key={menuItems.id}
               imageURL={menuItems.imageURL}
               id={menuItems.id}

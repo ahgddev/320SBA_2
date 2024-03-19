@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import GroceryItemCard from "../components/GroceryItemCard";
+import "../App.css";
 
 function Grocery({ addFunc }) {
   const [groceryData, setGroceryData] = useState();
@@ -13,7 +14,7 @@ function Grocery({ addFunc }) {
     const options = {
       params: {
         query: searchQuery,
-        number: "5",
+        number: "7",
         offset: pageNumber,
       },
       headers: {
@@ -38,18 +39,21 @@ function Grocery({ addFunc }) {
 
   return (
     <div id="groceryContainer">
-      <h1>Grocery Page</h1>
-      <input
-        type="search"
-        name="searchbar"
-        id="searchBar"
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <button id="searchBtn" onClick={dataGrabber}>
-        Search
-      </button>
+      <h1>Grocery Products</h1>
+      <div id="searchSection">
+        {" "}
+        <input
+          type="search"
+          name="searchbar"
+          id="searchBar"
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button id="searchBtn" onClick={dataGrabber}>
+          Search
+        </button>
+      </div>
       {loading ? (
-        <div>
+        <div id="loadingScreen">
           <p>Loading data...</p>
         </div>
       ) : null}
@@ -57,6 +61,7 @@ function Grocery({ addFunc }) {
         {groceryData?.map((groceryItems) => {
           return (
             <GroceryItemCard
+              className="cardItem"
               key={groceryItems.id}
               id={groceryItems.id}
               title={groceryItems.title}
@@ -64,23 +69,26 @@ function Grocery({ addFunc }) {
             />
           );
         })}
-        <button
-          id="backBtn"
-          onClick={() => {
-            setPageNumber(pageNumber == 5 ? 0 : pageNumber - 5);
-          }}
-        >
-          Back
-        </button>
-        <button
-          id="nextBtn"
-          onClick={() => {
-            setPageNumber(pageNumber + 5);
-          }}
-        >
-          Next
-        </button>
       </section>
+      <div id="progressButtons">
+          {" "}
+          <button
+            id="backBtn"
+            onClick={() => {
+              setPageNumber(pageNumber == 7 ? 0 : pageNumber - 7);
+            }}
+          >
+            Back
+          </button>
+          <button
+            id="nextBtn"
+            onClick={() => {
+              setPageNumber(pageNumber + 7);
+            }}
+          >
+            Next
+          </button>
+        </div>
     </div>
   );
 }
