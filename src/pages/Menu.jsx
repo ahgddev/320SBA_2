@@ -1,6 +1,6 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 // import dataGrabber from "../data/server";
 import MenuItemCard from "../components/MenuItemCard";
 // const test = [
@@ -47,46 +47,54 @@ import MenuItemCard from "../components/MenuItemCard";
 
 function Menu() {
   const [menuData, setMenuData] = useState();
+  const [searchQuery, setSearchQuery] = useState("burger");
 
- async function dataGrabber(query, page) {
+  async function dataGrabber() {
     //Add parameters to function
-    
+
     const options = {
       params: {
-        query: "burger",
-        number: '5',
-        offset: 0
+        query: searchQuery,
+        number: "5",
+        offset: 0,
       },
       headers: {
-        'x-api-key': import.meta.env.VITE_API_KEY
-      }
+        "x-api-key": import.meta.env.VITE_API_KEY,
+      },
     };
     try {
-      let response = await axios.get('https://api.spoonacular.com/food/menuItems/search', options);
-      setMenuData(response.data.menuItems)
+      let response = await axios.get(
+        "https://api.spoonacular.com/food/menuItems/search",
+        options
+      );
+      setMenuData(response.data.menuItems);
     } catch (error) {
       console.error(error.response);
     }
   }
 
   useEffect(() => {
-    dataGrabber()
-  },[])
+    dataGrabber();
+  }, []);
 
   return (
     <div id="menuContainer">
       <h1>Menu Page</h1>
-      <input type="search" name="searchbar" id="searchBar" />
-      <button id="searchBtn">Search</button>
+      <input type="search" name="searchbar" id="searchBar" onChange={(e) => setSearchQuery(e.target.value)}/>
+      <button id="searchBtn" onClick={dataGrabber}>Search</button>
       <section id="menuResults">
         {menuData?.map((menuItems) => {
-          {console.log("Currently " + JSON.stringify(menuItems))}
-          return <MenuItemCard
-            imageURL={menuItems.image}
-            id={menuItems.id}
-            title={menuItems.title}
-            restaraunt={menuItems.restarauntChain}
-          />
+          {
+            console.log("Currently " + JSON.stringify(menuItems));
+          }
+          return (
+            <MenuItemCard
+              imageURL={menuItems.image}
+              id={menuItems.id}
+              title={menuItems.title}
+              restaraunt={menuItems.restarauntChain}
+            />
+          );
         })}
       </section>
     </div>
