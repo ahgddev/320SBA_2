@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import GroceryItemCard from "../components/GroceryItemCard";
 
@@ -56,7 +56,7 @@ function Grocery() {
       <section id="groceryResults">
         {groceryData?.map((groceryItems) => {
           return (
-            <GroceryItemCard id={groceryItems.id} title={groceryItems.title} />
+            <GroceryItemCard key={groceryItems.id} id={groceryItems.id} title={groceryItems.title}/>
           );
         })}
         <button
