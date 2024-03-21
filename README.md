@@ -1,6 +1,6 @@
 # SBA 320
 ## Project
-SBA 319 is a major project showcasing my skills regarding utilizing React.js/React to create a front end application that retrieves data from an API.
+SBA 320 is a major project showcasing my skills regarding utilizing React.js/React to create a front end application that retrieves data from an API.
 
 ## Project Overview
 This app was created to allow a user to search up food products from an API and add them to a favorites list. A user can keep track of foods they'd like to try or purchase later.
